@@ -4,11 +4,11 @@ import Navbar from "../../Pages/Navbar/Navbar";
 
 const Main = () => {
     return (
-        <div>
+        <>
            <Navbar/>
            <Outlet/>
            <Footer/>
-        </div>
+        </>
     );
 };
 
