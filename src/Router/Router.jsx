@@ -5,6 +5,7 @@ import Login from "../Pages/Login/Login";
 import Signup from "../Pages/Signup/Signup";
 import About from "../Pages/About/About";
 import Media from "../Pages/Media/Media";
+import PostDetails from "../Pages/PostDetails/PostDetails";
 
 export const router = createBrowserRouter ([
     {
@@ -22,6 +23,10 @@ export const router = createBrowserRouter ([
             {
                 path: '/media',
                 element: <Media/>
+            },
+            {
+                path: '/post-details',
+                element: <PostDetails/>
             },
             {
                 path: '/login',

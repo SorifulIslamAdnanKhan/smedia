@@ -11,7 +11,7 @@ const Navbar = () => {
         <header>
             <div className="py-4">
                 {/* Main Navigation Menu */}
-                <nav className="relative flex items-center justify-between lg:justify-around p-2">
+                <nav className="relative flex items-center justify-around p-2">
                     {/* Logo section */}
                     <Link to="/" className="text-2xl md:text-3xl font-bold text-blue-600">SMedia</Link>
                     {/* Nav Items Section */}
