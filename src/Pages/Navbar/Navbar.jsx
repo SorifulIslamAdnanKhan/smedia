@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { FaBars } from "react-icons/fa";
 import { GrClose } from "react-icons/gr";
 import { AuthContext } from "../../context/AuthProvider";
@@ -9,10 +9,13 @@ const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     const { user, logout } = useContext(AuthContext);
+    const navigate = useNavigate()
 
     const handleLogout = () => {
         logout()
-            .then(() => { })
+            .then(() => {
+                navigate("/login")
+            })
             .catch(error => console.log(error));
     }
 
@@ -32,10 +35,10 @@ const Navbar = () => {
                                         <NavLink to='/' className={({ isActive }) => (isActive ? 'text-blue-600' : 'text-slate-950')}>Home</NavLink>
                                     </li>
                                     <li className="hover:border-b-4 border-b-blue-500 pr-4 duration-200">
-                                        <NavLink to='/about' className={({ isActive }) => (isActive ? 'text-blue-600' : 'text-slate-950')}>About</NavLink>
+                                        <NavLink to='/media' className={({ isActive }) => (isActive ? 'text-blue-600' : 'text-slate-950')}>Media</NavLink>
                                     </li>
                                     <li className="hover:border-b-4 border-b-blue-500 pr-4 duration-200">
-                                        <NavLink to='/media' className={({ isActive }) => (isActive ? 'text-blue-600' : 'text-slate-950')}>Media</NavLink>
+                                        <NavLink to='/about' className={({ isActive }) => (isActive ? 'text-blue-600' : 'text-slate-950')}>About</NavLink>
                                     </li>
                                     <li><button onClick={handleLogout}>Logout</button></li>
                                 </>
@@ -90,10 +93,10 @@ const Navbar = () => {
                                                                 <NavLink to='/' className={({ isActive }) => (isActive ? 'text-blue-600' : 'text-slate-950')}>Home</NavLink>
                                                             </li>
                                                             <li className="hover:border-b-4 border-b-blue-500 pr-4 duration-200">
-                                                                <NavLink to='/about' className={({ isActive }) => (isActive ? 'text-blue-600' : 'text-slate-950')}>About</NavLink>
+                                                                <NavLink to='/media' className={({ isActive }) => (isActive ? 'text-blue-600' : 'text-slate-950')}>Media</NavLink>
                                                             </li>
                                                             <li className="hover:border-b-4 border-b-blue-500 pr-4 duration-200">
-                                                                <NavLink to='/media' className={({ isActive }) => (isActive ? 'text-blue-600' : 'text-slate-950')}>Media</NavLink>
+                                                                <NavLink to='/about' className={({ isActive }) => (isActive ? 'text-blue-600' : 'text-slate-950')}>About</NavLink>
                                                             </li>
                                                             <li><button onClick={handleLogout}>Logout</button></li>
                                                         </>

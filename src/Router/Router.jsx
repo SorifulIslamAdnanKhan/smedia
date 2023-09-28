@@ -8,34 +8,35 @@ import Media from "../Pages/Media/Media";
 import PostDetails from "../Pages/PostDetails/PostDetails";
 import PrivateRoute from "./PrivateRoute/PrivateRoute";
 
-export const router = createBrowserRouter ([
+export const router = createBrowserRouter([
     {
         path: '/',
-        element: <Main/>,
-        children:[
+        element: <Main />,
+        children: [
             {
                 path: '/',
-                element: <PrivateRoute><Home/></PrivateRoute>
+                element: <PrivateRoute><Home /></PrivateRoute>
             },
             {
                 path: '/about',
-                element: <About/>
+                element: <About />
             },
             {
                 path: '/media',
-                element: <Media/>
+                element: <Media />
             },
             {
-                path: '/post-details',
-                element: <PostDetails/>
+                path: '/post-details/:id',
+                element: <PostDetails />,
+                loader: ({ params }) => fetch(`http://localhost:5000/post/${params.id}`),
             },
             {
                 path: '/login',
-                element: <Login/>
+                element: <Login />
             },
             {
                 path: '/signup',
-                element: <Signup/>
+                element: <Signup />
             },
         ]
     }

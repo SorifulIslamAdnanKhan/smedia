@@ -9,7 +9,7 @@ const AddPostSection = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
 
     const imageHostKey = import.meta.env.VITE_APP_IMBB_Key;
-    console.log(imageHostKey);
+
     const handleAddProduct = (data) => {
 
         const image = data.image[0];
