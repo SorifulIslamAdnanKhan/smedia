@@ -1,11 +1,20 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { FaBars } from "react-icons/fa";
 import { GrClose } from "react-icons/gr";
+import { AuthContext } from "../../context/AuthProvider";
 
 const Navbar = () => {
 
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+    const { user, logout } = useContext(AuthContext);
+
+    const handleLogout = () => {
+        logout()
+            .then(() => { })
+            .catch(error => console.log(error));
+    }
 
     return (
         <header>
@@ -16,22 +25,30 @@ const Navbar = () => {
                     <Link to="/" className="text-2xl md:text-3xl font-bold text-blue-600">SMedia</Link>
                     {/* Nav Items Section */}
                     <ul className="items-center hidden space-x-8 lg:flex">
-                        <li className="hover:border-b-4 border-b-blue-500 pr-4 duration-200">
-                            <NavLink to='/' className={({ isActive }) => (isActive ? 'text-blue-600' : 'text-slate-950')}>Home</NavLink>
-                        </li>
-                        <li className="hover:border-b-4 border-b-blue-500 pr-4 duration-200">
-                            <NavLink to='/about' className={({ isActive }) => (isActive ? 'text-blue-600' : 'text-slate-950')}>About</NavLink>
-                        </li>
-                        <li className="hover:border-b-4 border-b-blue-500 pr-4 duration-200">
-                            <NavLink to='/media' className={({ isActive }) => (isActive ? 'text-blue-600' : 'text-slate-950')}>Media</NavLink>
-                        </li>
-                        <li className="hover:border-b-4 border-b-blue-500 pr-4 duration-200">
-                            <NavLink to='/login' className={({ isActive }) => (isActive ? 'text-blue-600' : 'text-slate-950')}>Login</NavLink>
-                        </li>
-                        <li className="hover:border-b-4 border-b-blue-500 pr-4 duration-200 space-y-4">
-                            <NavLink to='/signup' className={({ isActive }) => (isActive ? 'text-blue-600' : 'text-slate-950')}>Signup</NavLink>
-                        </li>
-                        
+                        {
+                            user?.uid ?
+                                <>
+                                    <li className="hover:border-b-4 border-b-blue-500 pr-4 duration-200">
+                                        <NavLink to='/' className={({ isActive }) => (isActive ? 'text-blue-600' : 'text-slate-950')}>Home</NavLink>
+                                    </li>
+                                    <li className="hover:border-b-4 border-b-blue-500 pr-4 duration-200">
+                                        <NavLink to='/about' className={({ isActive }) => (isActive ? 'text-blue-600' : 'text-slate-950')}>About</NavLink>
+                                    </li>
+                                    <li className="hover:border-b-4 border-b-blue-500 pr-4 duration-200">
+                                        <NavLink to='/media' className={({ isActive }) => (isActive ? 'text-blue-600' : 'text-slate-950')}>Media</NavLink>
+                                    </li>
+                                    <li><button onClick={handleLogout}>Logout</button></li>
+                                </>
+                                :
+                                <>
+                                    <li className="hover:border-b-4 border-b-blue-500 pr-4 duration-200">
+                                        <NavLink to='/login' className={({ isActive }) => (isActive ? 'text-blue-600' : 'text-slate-950')}>Login</NavLink>
+                                    </li>
+                                    <li className="hover:border-b-4 border-b-blue-500 pr-4 duration-200 space-y-4">
+                                        <NavLink to='/signup' className={({ isActive }) => (isActive ? 'text-blue-600' : 'text-slate-950')}>Signup</NavLink>
+                                    </li>
+                                </>
+                        }
                     </ul>
                     <div className="flex gap-3 justify-center items-center">
                         {/* Mobile Navbar Section */}
@@ -66,22 +83,30 @@ const Navbar = () => {
                                         {/* Mobile Nav Items Section */}
                                         <nav>
                                             <ul className="space-y-4">
-                                                <li>
-                                                    <NavLink to='/' className={({ isActive }) => (isActive ? 'text-blue-600' : 'text-slate-950')}>Home</NavLink>
-                                                </li>
-                                                <li>
-                                                    <NavLink to='/about' className={({ isActive }) => (isActive ? 'text-blue-600' : 'text-slate-950')}>About</NavLink>
-                                                </li>
-                                                <li>
-                                                    <NavLink to='/media' className={({ isActive }) => (isActive ? 'text-blue-600' : 'text-slate-950')}>Media</NavLink>
-                                                </li>
-                                                <li>
-                                                    <NavLink to='/login' className={({ isActive }) => (isActive ? 'text-blue-600' : 'text-slate-950')}>Login</NavLink>
-                                                </li>
-                                                <li className="space-y-4">
-                                                    <NavLink to='/signup' className={({ isActive }) => (isActive ? 'text-blue-600' : 'text-slate-950')}>Signup</NavLink>
-                                                </li>
-                                            </ul>
+                                                {
+                                                    user?.uid ?
+                                                        <>
+                                                            <li className="hover:border-b-4 border-b-blue-500 pr-4 duration-200">
+                                                                <NavLink to='/' className={({ isActive }) => (isActive ? 'text-blue-600' : 'text-slate-950')}>Home</NavLink>
+                                                            </li>
+                                                            <li className="hover:border-b-4 border-b-blue-500 pr-4 duration-200">
+                                                                <NavLink to='/about' className={({ isActive }) => (isActive ? 'text-blue-600' : 'text-slate-950')}>About</NavLink>
+                                                            </li>
+                                                            <li className="hover:border-b-4 border-b-blue-500 pr-4 duration-200">
+                                                                <NavLink to='/media' className={({ isActive }) => (isActive ? 'text-blue-600' : 'text-slate-950')}>Media</NavLink>
+                                                            </li>
+                                                            <li><button onClick={handleLogout}>Logout</button></li>
+                                                        </>
+                                                        :
+                                                        <>
+                                                            <li className="hover:border-b-4 border-b-blue-500 pr-4 duration-200">
+                                                                <NavLink to='/login' className={({ isActive }) => (isActive ? 'text-blue-600' : 'text-slate-950')}>Login</NavLink>
+                                                            </li>
+                                                            <li className="hover:border-b-4 border-b-blue-500 pr-4 duration-200 space-y-4">
+                                                                <NavLink to='/signup' className={({ isActive }) => (isActive ? 'text-blue-600' : 'text-slate-950')}>Signup</NavLink>
+                                                            </li>
+                                                        </>
+                                                } </ul>
                                         </nav>
                                     </div>
                                 </div>

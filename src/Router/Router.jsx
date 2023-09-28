@@ -6,6 +6,7 @@ import Signup from "../Pages/Signup/Signup";
 import About from "../Pages/About/About";
 import Media from "../Pages/Media/Media";
 import PostDetails from "../Pages/PostDetails/PostDetails";
+import PrivateRoute from "./PrivateRoute/PrivateRoute";
 
 export const router = createBrowserRouter ([
     {
@@ -14,7 +15,7 @@ export const router = createBrowserRouter ([
         children:[
             {
                 path: '/',
-                element: <Home/>
+                element: <PrivateRoute><Home/></PrivateRoute>
             },
             {
                 path: '/about',
