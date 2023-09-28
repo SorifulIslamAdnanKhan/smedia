@@ -9,7 +9,7 @@ const About = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/user/${user?.email}`)
+    fetch(`https://smedia-server.vercel.app/user/${user?.email}`)
       .then((res) => res.json())
       .then((data) => {
         setUserData(data);
@@ -24,7 +24,6 @@ const About = () => {
     setIsModalOpen(true);
   };
 
-  // Function to update user data in the parent component
   const handleUpdateUser = (updatedUserData) => {
     console.log('Updating user data:', updatedUserData);
 

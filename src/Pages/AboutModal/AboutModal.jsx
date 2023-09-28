@@ -8,7 +8,7 @@ const AboutModal = ({ isOpen, onClose, user }) => {
 
     const updateUserMutation = useMutation(
         (updatedUserData) =>
-            fetch(`http://localhost:5000/user/${user._id}`, {
+            fetch(`https://smedia-server.vercel.app/user/${user._id}`, {
                 method: "PATCH",
                 headers: {
                     "content-type": "application/json",

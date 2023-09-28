@@ -22,7 +22,7 @@ const Signup = () => {
             updateUser(data.name)
                 .then(() => {
                     const saveUser = { name: data.name, email: data.email };
-                    fetch("http://localhost:5000/user", {
+                    fetch("https://smedia-server.vercel.app/user", {
                         method: "POST",
                         headers: {
                             "content-type": "application/json",
@@ -38,7 +38,7 @@ const Signup = () => {
                                     "You have successfully signed up!",
                                     "success"
                                 );
-                                navigate("/");
+                                 navigate("/");
                             }
                         });
                 })

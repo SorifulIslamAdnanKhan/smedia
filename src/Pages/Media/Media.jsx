@@ -6,7 +6,7 @@ const Media = () => {
     const [posts, setPosts] = useState([]);
 
     // Fetch API data
-    const url = "http://localhost:5000/post";
+    const url = "https://smedia-server.vercel.app/post";
 
     useEffect(() => {
         fetch(url)

@@ -15,7 +15,7 @@ const handleGoogleSignIn = () => {
         const user = result.user;
 
         const saveUser = { name: user.displayName, email: user.email };
-        fetch("http://localhost:5000/user", {
+        fetch("https://smedia-server.vercel.app/user", {
           method: "POST",
           headers: {
             "content-type": "application/json",

@@ -28,7 +28,7 @@ export const router = createBrowserRouter([
             {
                 path: '/post-details/:id',
                 element: <PostDetails />,
-                loader: ({ params }) => fetch(`http://localhost:5000/post/${params.id}`),
+                loader: ({ params }) => fetch(`https://smedia-server.vercel.app/post/${params.id}`),
             },
             {
                 path: '/login',

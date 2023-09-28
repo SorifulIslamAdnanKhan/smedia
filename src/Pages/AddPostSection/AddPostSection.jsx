@@ -29,7 +29,7 @@ const AddPostSection = () => {
                         image: photoData.data.url,
                     }
 
-                    fetch(`http://localhost:5000/post`, {
+                    fetch(`https://smedia-server.vercel.app/post`, {
                         method: 'POST',
                         headers: {
                             'content-type': 'application/json',
